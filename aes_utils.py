@@ -57,9 +57,9 @@ def encriptar(texto: str, llave: str) -> str:
     True
     """
     key = _derive_key(llave)
-    iv = get_random_bytes(16)
+    iv = get_random_bytes(32)
     cipher = AES.new(key, AES.MODE_CBC, iv)
-    ct = cipher.encrypt(pad(texto.encode("ascii"), AES.block_size))
+    ct = cipher.encrypt(pad(texto.encode("utf-08"), AES.block_size))
     return ct.hex()
 
 
